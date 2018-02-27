@@ -1,10 +1,10 @@
 package model
 
 import (
-	"net/http"
 	"fmt"
 	"ServerGo/config"
-	"ServerGo/framework"
+	"log"
+	"ServerGo/framework/core"
 )
 
 type User struct {
@@ -17,18 +17,19 @@ type User struct {
 func (u User) ListById(id int) []User {
 	config := config.Configuration{}
 	var url = fmt.Sprintf("%s?page=%d", config.GetBaseUrl(), id)
+	log.Println(url)
+	caller := core.Caller{}
 
-	caller := framework.Caller{}
-	caller.Get(url)
 
-	var users = []User {
+	users := caller.Get(url, func(response string) string {
+		return response
+	})
+
+	fmt.Println(users)
+
+	return []User {
 		User{}, User{},
 	}
-
-	return users
-}
-
-func (u User) make() {
 
 }
 
