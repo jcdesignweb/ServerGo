@@ -1,15 +1,12 @@
 package main
 
-import (
-	"net/http"
-)
-
-func error(w http.ResponseWriter, statusError int) {
-	w.WriteHeader(statusError)
-}
+import ( "ServerGo/app")
 
 func main() {
+	// init server
+	app.Init()
 
-	StartRoutes()
+	// start server
+	app.Server.Logger.Fatal(app.Server.Start(":1313"))
 
 }
