@@ -14,9 +14,10 @@ type Application struct {
 	Name      string  `json:"name"`
 	Version   string  `json:"version"`
 	ENV       string  `json:"env"`
+	Port	  string		`json:"port"`
 	UriApi    string  `json:"api_api_uri"`
 	AppConfig Config `json:"application_config"`
-	DBConfig  Config `json:"database_config"`
+
 }
 
 func init() {
@@ -24,6 +25,7 @@ func init() {
 	App.Name = APP_NAME
 	App.Version = APP_VERSION
 	App.UriApi = APP_API_URI
+	App.Port = APP_PORT
 	App.loadENV()
 	App.loadAppConfig()
 }

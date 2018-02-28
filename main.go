@@ -1,6 +1,9 @@
 package main
 
-import ( "ServerGo/app")
+import (
+	"ServerGo/app"
+	"ServerGo/boot"
+)
 
 /**
  * @author Juan Andres Carmena
@@ -10,6 +13,6 @@ func main() {
 	app.Init()
 
 	// start server
-	app.Server.Logger.Fatal(app.Server.Start(":1313"))
+	app.Server.Logger.Fatal(app.Server.Start(boot.App.Port))
 
 }

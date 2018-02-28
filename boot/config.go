@@ -9,6 +9,8 @@ var (
 
 	APP_API_URI = "https://reqres.in/"
 
+	APP_PORT = ":9000"
+
 	DEV_ENV = "dev"
 
 	STAGING_ENV = "staging"
@@ -24,6 +26,5 @@ var (
 	CONFIG_PATH = `config`
 
 	CONFIG_FILE_TYPE = `yaml`
-
 
 )
