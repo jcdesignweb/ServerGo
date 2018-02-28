@@ -7,7 +7,7 @@ var (
 
 	APP_VERSION = "1.0.0"
 
-	APP_API_URI = ""
+	APP_API_URI = "https://reqres.in/"
 
 	DEV_ENV = "dev"
 

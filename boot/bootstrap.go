@@ -6,7 +6,6 @@ import (
 	"fmt"
 )
 
-
 var App *Application
 
 type Config viper.Viper
@@ -15,6 +14,7 @@ type Application struct {
 	Name      string  `json:"name"`
 	Version   string  `json:"version"`
 	ENV       string  `json:"env"`
+	UriApi    string  `json:"api_api_uri"`
 	AppConfig Config `json:"application_config"`
 	DBConfig  Config `json:"database_config"`
 }
@@ -23,7 +23,7 @@ func init() {
 	App = &Application{}
 	App.Name = APP_NAME
 	App.Version = APP_VERSION
-	App.uriApi = APP_
+	App.UriApi = APP_API_URI
 	App.loadENV()
 	App.loadAppConfig()
 }

@@ -1,6 +1,10 @@
 package models
 
-import "fmt"
+import (
+	"fmt"
+	"ServerGo/app/models/request"
+	"ServerGo/boot"
+)
 
 // Contact struct
 type User struct {
@@ -14,16 +18,32 @@ type User struct {
 // Contacts slice of contact
 type Users []*User
 
-// String return the string of object
-func (c *User) String() string {
-	return fmt.Sprintf("%d, %s, %s, %s", c.id, c.fistName, c.lastName, c.avatar)
+var application = boot.App
+
+func (u *User) GetUsers(id int) string {
+
+	var method = "api/users"
+
+	var url = fmt.Sprintf("%s%s?page=%d", application.UriApi, method, id)
+
+	req := request.Request{}
+	usersJSON, status := req.Get(url)
+
+	if status {
+		// Maybe here I need make parse JSON with My User struct. But in this case this is not necessary
+		return usersJSON
+	}
+
+	return ""
+
 }
 
-// String of contacts
-func (cs *Users) String() string {
-	var r string
-	for _, c := range *cs {
-		r += fmt.Sprintf("%d, %s, %s, %s\n", c.id, c.fistName, c.lastName, c.avatar)
-	}
-	return r
+// String return the string of object
+func (u *User) String() string {
+	return fmt.Sprintf("%d, %s, %s, %s", u.id, u.fistName, u.lastName, u.avatar)
+}
+
+// Parse json response and return an User, for now this return empty User object
+func (u *User) parse(response string) (user User) {
+	return User{}
 }

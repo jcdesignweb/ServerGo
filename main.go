@@ -2,6 +2,9 @@ package main
 
 import ( "ServerGo/app")
 
+/**
+ * @author Juan Andres Carmena
+ */
 func main() {
 	// init server
 	app.Init()
