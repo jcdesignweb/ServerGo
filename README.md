@@ -16,36 +16,28 @@ git repo: https://github.com/Masterminds/glide
 
 The easiest way to install the latest release on Mac or Linux is with the following script:
 
+```
 curl https://glide.sh/get | sh
 On Mac OS X you can also install the latest release via Homebrew:
+```
 
+```
 $ brew install glide
+```
 
 On Ubuntu Precise (12.04), Trusty (14.04), Wily (15.10) or Xenial (16.04) you can install from our PPA:
 
+```
 sudo add-apt-repository ppa:masterminds/glide && sudo apt-get update
 sudo apt-get install glide
-
-```
-Give examples
 ```
 
 ### Installing
 
+```
 cd ./yourProject
 Execute: glide init
-
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
@@ -73,21 +65,16 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [echo](https://echo.labstack.com/) - The RestFul framework used
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+Please read [CONTRIBUTING.md](https://echo.labstack.com/) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Juan Andres Carmena** - *Github* - [jcdesignweb](https://github.com/jcdesignweb)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 

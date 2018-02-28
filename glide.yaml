@@ -1,0 +1,4 @@
+package: ServerGo
+import:
+- package: github.com/labstack/echo
+  version: 3.2.6
