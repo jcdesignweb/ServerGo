@@ -13,13 +13,13 @@ var userModel = models.User{}
 
 func (u Users) Routes(Server *echo.Echo) {
 	Server.GET("/users/:id", func(context echo.Context) error {
-		var response string
+		var response models.UserResponse
 
 		pageId, err := strconv.Atoi(context.Param("id"))
 		if err != nil {
 			return context.JSON(http.StatusBadRequest, "Check id param")
 		} else {
-			response = userModel.GetUsers(pageId)
+			response, err = userModel.GetUsers(pageId)
 		}
 
 		return context.JSON(http.StatusOK, response)

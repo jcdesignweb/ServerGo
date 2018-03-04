@@ -2,48 +2,55 @@ package models
 
 import (
 	"fmt"
-	"ServerGo/app/models/request"
 	"ServerGo/boot"
+	"encoding/json"
+	"net/http"
 )
 
-// Contact struct
+// User struct
 type User struct {
-	id          int          `json:"id"`
-	fistName        string       `json:"first_name"`
-	lastName        string       `json:"last_name"`
-	avatar       string       `json:"avatar"`
-
+	ID          int    	`json:"id"`
+	FistName	string	`json:"first_name"`
+	LastName    string	`json:"last_name"`
+	Avatar      string	`json:"avatar"`
 }
 
-// Contacts slice of contact
+type UserResponse struct {
+	Page       int `json:"page"`
+	PerPage    int `json:"per_page"`
+	Total      int `json:"total"`
+	TotalPages int `json:"total_pages"`
+	Data       []User `json:"data"`
+}
+
 type Users []*User
 
 var application = boot.App
 
-func (u *User) GetUsers(id int) string {
-
+func (u *User) GetUsers(id int) (UserResponse, error) {
+	var response UserResponse
 	var method = "api/users"
-
 	var url = fmt.Sprintf("%s%s?page=%d", application.UriApi, method, id)
 
-	req := request.Request{}
-	usersJSON, status := req.Get(url)
+	request, err := http.Get(url)
+	if err == nil {
 
-	if status {
-		// Maybe here I need make parse JSON with My User struct. But in this case this is not necessary
-		return usersJSON
+		decoder := json.NewDecoder(request.Body)
+		err := decoder.Decode(&response)
+		if err != nil {
+			panic(err)
+		}
+
+		if err != nil {
+			fmt.Println("whoops:", err)
+		}
 	}
 
-	return ""
-
+	return response, err
 }
 
 // String return the string of object
 func (u *User) String() string {
-	return fmt.Sprintf("%d, %s, %s, %s", u.id, u.fistName, u.lastName, u.avatar)
+	return fmt.Sprintf("%d, %s, %s, %s", u.ID, u.FistName, u.LastName, u.Avatar)
 }
 
-// Parse json response and return an User, for now this return empty User object
-func (u *User) parse(response string) (user User) {
-	return User{}
-}
